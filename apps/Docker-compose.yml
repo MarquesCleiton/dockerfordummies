@@ -1,0 +1,33 @@
+
+services:
+  app_banco:
+    image: cleiton2210/app-banco
+    container_name: app_banco
+    networks:
+      - minha-bridge
+    ports: 
+      - 3306:3306
+  app_java: 
+    image: cleiton2210/app-java
+    container_name: app_java
+    networks:
+      - minha-bridge
+    ports: 
+      - 8080:8080
+    depends_on: 
+      - app_banco
+  app_web: 
+    image: cleiton2210/app-web
+    container_name: app_web
+    networks:
+      - minha-bridge
+    ports: 
+      - 80:80
+    depends_on: 
+      - app_java
+      - app_banco
+networks:
+  minha-bridge:
+    driver: bridge
+
+

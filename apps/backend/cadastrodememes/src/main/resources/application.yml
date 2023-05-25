@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://${BD_HOST:localhost}:${BD_PORT:3306}/db_memes
+    username: root
+    password: ${BD_PASS:senha_banco}
+
+  jpa:
+    show-sql: true
+
+server:
+  port: 8080
